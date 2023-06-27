@@ -183,8 +183,7 @@ view.onclick=function view()
 
 
 
-rtweqdsf
-     //first commit (Editing)
+
      actionscell.getElementsByTagName('button')[1].onclick = function () {
       // alert("Editing");
       modal.style.display = "block";
