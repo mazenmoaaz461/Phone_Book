@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Phone Book</title>
+    <style></style>
+    <script>
+        // var j = 0;
+    </script>
+    <link href="css/index.css" rel="stylesheet" type="text/css"/>
+    <link href="css/modal.css" rel="stylesheet" type="text/css"/>
+
+</head>
+<body>
+    
+
+    
+
+      <!-- <table style="border: 1px solid black;"> -->
+      <table id="wholetable">
+        <thead>
+          <tr >
+            <th>Name</th>
+            <th>Phone Number</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody id="table">
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+              </tr>
+              
+              <!-- <tr>
+                <td>Jane Doe</td>
+                <td>987-654-3210</td>
+                <td><button>Edit</button> <button>Delete</button></td>
+              </tr> -->
+        </tbody>
+        </table>
+
+
+        
+        <button id="myBtn" style="margin: 20px;">Add Contact</button>
+        <button id="view" >View</button>
+
+
+        <div id="myModal" class="modal">
+            <!-- Modal content -->
+   <div class="modal-content">
+       <div class="modal-header">
+         <span class="close">&times;</span>
+         <h2>Add new Contact</h2>
+       </div>
+       <div class="modal-body">
+           <br/>
+           <div>
+         <span>Contact name</span><br/>
+         <input type="text" id="name" placeholder="Enter your name" class="textfields" required/>
+           </div><br/>
+           
+           <div>
+         <span>Phone Number</span><br/>
+         <input type="text" id="pn" placeholder="Enter your Phone Number" class="textfields" required/>
+           </div><br/>
+         
+       
+   
+           <button id="save" >Save</button>
+       </div>
+       <div class="modal-footer">
+         <h3>Phone Book</h3>
+       </div>
+     </div> 
+   
+         </div>
+      <script src="js/index.js" type="text/javascript"></script>
+      <script src="js/modal.js" type="text/javascript"></script>
+</body>
+</html>
