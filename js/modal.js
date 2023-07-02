@@ -11,7 +11,7 @@ const span = document.getElementsByClassName("close")[0];
 const save=document.getElementById("save");
 
 //view button
-const view=document.getElementById("view");
+// const view=document.getElementById("view");
 
 
 
@@ -81,6 +81,33 @@ window.onclick = function(event) {
 
 
 
+// Get the items from local storage
+
+
+
+
+    const cnFromStorage = JSON.parse(localStorage.getItem("cndata"));
+    const pnFromStorage = JSON.parse(localStorage.getItem("pndata"));
+    // document.write(cnFromStorage);
+
+
+
+
+    let delbtn = document.createElement("button");
+    
+    let editbtn = document.createElement("button");
+    
+    delbtn.innerHTML = "  ete";
+    
+    editbtn.innerHTML="Edit";
+    
+
+    
+    // delbtn.onclick = function () {
+    //   alert("fghe");
+    //  };
+
+    //  document.body.appendChild(delbtn);
 
 save.onclick = function save() {
 
@@ -104,43 +131,49 @@ save.onclick = function save() {
   localStorage.setItem('cndata', JSON.stringify(cn_old_data));
   localStorage.setItem('pndata', JSON.stringify(pn_old_data));
 
+
   
-  //clear input fields
-  document.getElementById("name").value='';
-  document.getElementById("pn").value='';
+
+    //clear input fields
+    document.getElementById("name").value='';
+    document.getElementById("pn").value='';
+
+    //instance append to table on saving
+    
 };
 
 
-// Get the items from local storage
-const cnFromStorage = JSON.parse(localStorage.getItem("cndata"));
-const pnFromStorage = JSON.parse(localStorage.getItem("pndata"));
-// document.write(cnFromStorage);
 
 
 
 
-    let delbtn = document.createElement("button");
-    
-    let editbtn = document.createElement("button");
-    
-    delbtn.innerHTML = "Delete";
-    
-    editbtn.innerHTML="Edit";
-    
 
-    
-    // delbtn.onclick = function () {
-    //   alert("fghe");
-    //  };
 
-    //  document.body.appendChild(delbtn);
 
-view.onclick=function view()
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+function view()
 { 
-    document.getElementById("table").innerHTML ='';
+    // document.getElementById("table").innerHTML ='';
 
     for(let i = 0;i<cnFromStorage.length;i++){  
-
+      
     let row = document.createElement("tr");
     let cnCell = document.createElement("td");
     let pnCell = document.createElement("td");
@@ -151,18 +184,37 @@ view.onclick=function view()
     cnCell.innerHTML = cnFromStorage[i];
     pnCell.innerHTML = pnFromStorage[i];
     actionscell.innerHTML=`${delbtn.outerHTML} ${editbtn.outerHTML}`;
+
+
+
+    
+
+    // console.log(actionscell.getElementsByTagName('button'));
+
+
+
+
+
+
+
+
+
+
+
     
 
 
 
 
-
-    // console.log(actionscell.getElementsByTagName('button'));
     actionscell.getElementsByTagName('button')[0].onclick = function () {
       
-      // Shift the first item from the array.
-      cnFromStorage.shift();
-      pnFromStorage.shift();
+      // // Shift the first item from the array.
+      // cnFromStorage.shift();
+      // pnFromStorage.shift();
+
+      cnFromStorage.splice(cnFromStorage[i],1);
+      pnFromStorage.splice(pnFromStorage[i],1);
+
       // Save the array back to localstorage.
       localStorage.setItem('cndata', JSON.stringify(cnFromStorage));
       localStorage.setItem('pndata', JSON.stringify(pnFromStorage));
@@ -180,16 +232,25 @@ view.onclick=function view()
 
 
 
-
-
-
-
      actionscell.getElementsByTagName('button')[1].onclick = function () {
       // alert("Editing");
-      modal.style.display = "block";
+      // modal.style.display = "block";
+      // window.location.href = "/html_pages/edit.html";
+      
+      
      };
 
+
+
+
+
+
+
+
      
+
+
+
     // actionscell.innerHTML=`${
       
       
@@ -214,9 +275,13 @@ view.onclick=function view()
     // let table1 = document.getElementById("table").appendChild(row);
     // let table2 = document.getElementById("wholetable").appendChild(table1);
     // document.body.appendChild(table2);
+    console.log(i);
 
   }
   
+
+  
+
 }
 
 

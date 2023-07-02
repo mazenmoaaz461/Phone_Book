@@ -12,13 +12,13 @@
     <link href="css/modal.css" rel="stylesheet" type="text/css"/>
 
 </head>
-<body>
+<body onload="view()">
     
-
+      
     
 
       <!-- <table style="border: 1px solid black;"> -->
-      <table id="wholetable">
+      <table>
         <thead>
           <tr >
             <th>Name</th>
@@ -26,17 +26,11 @@
             <th>Actions</th>
           </tr>
         </thead>
-        <tbody id="table">
-            <tr>
+        <tbody id="table" >     
+            <!-- <tr>
                 <td></td>
                 <td></td>
                 <td></td>
-              </tr>
-              
-              <!-- <tr>
-                <td>Jane Doe</td>
-                <td>987-654-3210</td>
-                <td><button>Edit</button> <button>Delete</button></td>
               </tr> -->
         </tbody>
         </table>
@@ -44,7 +38,7 @@
 
         
         <button id="myBtn" style="margin: 20px;">Add Contact</button>
-        <button id="view" >View</button>
+        <!-- <button id="view" >View</button> -->
 
 
         <div id="myModal" class="modal">
