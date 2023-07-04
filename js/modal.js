@@ -108,7 +108,8 @@ function save() {
 function view()
 { 
     document.getElementById("table").innerHTML ='';
-
+    
+    try{
     for(let i = 0;i<cnFromStorage.length;i++){  
       
     let row = document.createElement("tr");
@@ -128,6 +129,11 @@ function view()
 
     document.getElementById("table").appendChild(row);
   }
+}
+catch(error)
+{
+  console.log("Empty data");
+}
 }
 
 // function deleteAll(){
