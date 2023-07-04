@@ -55,9 +55,8 @@ function save() {
   //if there is nothing saved at the start then save an empty array in localStorage
   if(localStorage.getItem('cndata')==null||localStorage.getItem('pndata')==null)
   {
-    // localStorage.setItem('cndata','[]');
-    // localStorage.setItem('pndata','[]');
-    alert("Please Enter a valid name or number");
+    localStorage.setItem('cndata','[]');
+    localStorage.setItem('pndata','[]'); 
   }
 
   let cn_old_data=JSON.parse(localStorage.getItem('cndata'));
