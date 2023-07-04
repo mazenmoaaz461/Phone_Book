@@ -12,18 +12,24 @@
     <link href="css/modal.css" rel="stylesheet" type="text/css"/>
 
 </head>
-<body onload="view()">
+<body onload="view();">
     
-      
-    
+      <h1>Contacts</h1>
 
+      <div class="myBTNS">
+      <button id="myBtn" style="margin: 20px;">Add Contact</button>
+      <!-- <button id="view" >View</button> -->
+      <button id="del" >Delete</button>
+      <button id="edit" >Edit</button>
+      </div>
       <!-- <table style="border: 1px solid black;"> -->
       <table>
         <thead>
           <tr >
+            <th></th>
             <th>Name</th>
             <th>Phone Number</th>
-            <th>Actions</th>
+            <!-- <th>Actions</th> -->
           </tr>
         </thead>
         <tbody id="table" >     
@@ -34,11 +40,6 @@
               </tr> -->
         </tbody>
         </table>
-
-
-        
-        <button id="myBtn" style="margin: 20px;">Add Contact</button>
-        <!-- <button id="view" >View</button> -->
 
 
         <div id="myModal" class="modal">
@@ -62,7 +63,8 @@
          
        
    
-           <button id="save" >Save</button>
+           <!-- <button id="save">Save</button> -->
+           <button id="save" onclick="save()">Save</button>
        </div>
        <div class="modal-footer">
          <h3>Phone Book</h3>

@@ -7,18 +7,21 @@ const btn = document.getElementById("myBtn");
 // Get the <span> element that closes the modal
 const span = document.getElementsByClassName("close")[0];
 
-//save button
-const save=document.getElementById("save");
+//checkbox for deleting the checked records
+let checkbox = document.createElement("input");
+// checkbox1.setAttribute("type", "checkbox");
+checkbox.type = "checkbox";
+checkbox.name = "checkbox";
+checkbox.value = "1";
+checkbox.id="checkaya";
+checkbox.style=
+{
+  background: "black",
+  color: "black",
+  height: "20px",
+};
 
-//view button
-// const view=document.getElementById("view");
 
-
-
-
-
-
-// When the user clicks on the button, open the modal
 btn.onclick = function() {
   modal.style.display = "block";
 }
@@ -44,286 +47,81 @@ window.onclick = function(event) {
   
 } 
 
-
-
-
-
-// save.onclick = function save() {
-
-//   //created Objects for user inputs 
-// const userdata = 
-// {
-//   name:document.getElementById("name").value,
-//   pnum:document.getElementById("pn").value
-// } 
-
-//   //if there is nothing saved at the start then save an empty array in localStorage
-//   if(localStorage.getItem('data')==null)
-//   {
-//     localStorage.setItem('data','[]')
-//   }
-  
-//   let old_data=JSON.parse(localStorage.getItem('data'));
-
-//   //add saved data to the old data
-//   old_data.push(userdata.name);
-//   old_data.push(userdata.pnum);
-//   // old_data.push(allinputs);
-
-//   //save old and new data in localStorage
-//   localStorage.setItem('data', JSON.stringify(old_data));
-
-//   //clear input fields
-//   document.getElementById("name").value='';
-//   document.getElementById("pn").value='';
-// };
-
-
-
-
-// Get the items from local storage
-
-
-
-
     const cnFromStorage = JSON.parse(localStorage.getItem("cndata"));
     const pnFromStorage = JSON.parse(localStorage.getItem("pndata"));
-    // document.write(cnFromStorage);
-
-
-
-
-    let delbtn = document.createElement("button");
     
-    let editbtn = document.createElement("button");
-    
-    delbtn.innerHTML = "  ete";
-    
-    editbtn.innerHTML="Edit";
-    
-
-    
-    // delbtn.onclick = function () {
-    //   alert("fghe");
-    //  };
-
-    //  document.body.appendChild(delbtn);
-
-save.onclick = function save() {
+function save() {
 
   //if there is nothing saved at the start then save an empty array in localStorage
-  if(localStorage.getItem('cndata')==null||localStorage.getItem('cndata')==null)
+  if(localStorage.getItem('cndata')==null||localStorage.getItem('pndata')==null)
   {
     localStorage.setItem('cndata','[]');
     localStorage.setItem('pndata','[]');
   }
 
-
   let cn_old_data=JSON.parse(localStorage.getItem('cndata'));
   let pn_old_data=JSON.parse(localStorage.getItem('pndata'));
+
   
   //add saved data to the old data
   cn_old_data.push(document.getElementById("name").value);
   pn_old_data.push(document.getElementById("pn").value);
   
-
+  
   //save old and new data in localStorage
   localStorage.setItem('cndata', JSON.stringify(cn_old_data));
   localStorage.setItem('pndata', JSON.stringify(pn_old_data));
-
-
-  
 
     //clear input fields
     document.getElementById("name").value='';
     document.getElementById("pn").value='';
 
-    //instance append to table on saving
+    //adding saved record to the table instantly on saving
+    if(cn_old_data  && pn_old_data){
+      let row = document.createElement("tr");
+      let cnCell = document.createElement("td");
+      let pnCell = document.createElement("td");
+
+  
+      const lastcn= cn_old_data[cn_old_data.length-1];
+      const lastpn= pn_old_data[pn_old_data.length-1];
+      cnCell.innerHTML = lastcn;
+      pnCell.innerHTML = lastpn;
+  
+      row.appendChild(cnCell);
+      row.appendChild(pnCell);
+  
+      document.getElementById("table").appendChild(row);
+  }
     
+
 };
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 function view()
 { 
-    // document.getElementById("table").innerHTML ='';
+    document.getElementById("table").innerHTML ='';
 
     for(let i = 0;i<cnFromStorage.length;i++){  
       
     let row = document.createElement("tr");
     let cnCell = document.createElement("td");
     let pnCell = document.createElement("td");
-    let actionscell = document.createElement("td");
-
-
-
+    let checkboxcell = document.createElement("td");
+    
+    
+    checkboxcell.innerHTML = checkbox.outerHTML;
     cnCell.innerHTML = cnFromStorage[i];
     pnCell.innerHTML = pnFromStorage[i];
-    actionscell.innerHTML=`${delbtn.outerHTML} ${editbtn.outerHTML}`;
-
-
-
     
-
-    // console.log(actionscell.getElementsByTagName('button'));
-
-
-
-
-
-
-
-
-
-
-
-    
-
-
-
-
-    actionscell.getElementsByTagName('button')[0].onclick = function () {
-      
-      // // Shift the first item from the array.
-      // cnFromStorage.shift();
-      // pnFromStorage.shift();
-
-      cnFromStorage.splice(cnFromStorage[i],1);
-      pnFromStorage.splice(pnFromStorage[i],1);
-
-      // Save the array back to localstorage.
-      localStorage.setItem('cndata', JSON.stringify(cnFromStorage));
-      localStorage.setItem('pndata', JSON.stringify(pnFromStorage));
-
-      const table1=document.getElementById("table"); 
-      table1.getElementsByTagName("tr")[0].remove();
-    };
-
-
-
-
-
-
-
-
-
-
-     actionscell.getElementsByTagName('button')[1].onclick = function () {
-      // alert("Editing");
-      // modal.style.display = "block";
-      // window.location.href = "/html_pages/edit.html";
-      
-      
-     };
-
-
-
-
-
-
-
-
-     
-
-
-
-    // actionscell.innerHTML=`${
-      
-      
-    //   delbtn[i].outerHTML.onclick = function () {
-    //   alert("dfas");
-     
-    
-    // }} 
-    
-    // ${editbtn.outerHTML}
-    
-    // `;
-    
+    row.appendChild(checkboxcell);
     row.appendChild(cnCell);
     row.appendChild(pnCell);
-    row.appendChild(actionscell);
-
+    
 
     document.getElementById("table").appendChild(row);
-    // document.body.appendChild(delbtn);
-
-    // let table1 = document.getElementById("table").appendChild(row);
-    // let table2 = document.getElementById("wholetable").appendChild(table1);
-    // document.body.appendChild(table2);
-    console.log(i);
-
   }
-  
-
-  
-
 }
 
+function deleteAll(){
 
-// delbtn.addEventListener("click", function(){
-//   alert("fayzz");
-// })
-
-
-
-// save.onclick = function save() {
-
-// //contact name
-// let cn = document.getElementById("name").value;
-
-// //CONTACT PHONE NUMBER
-// let pn = document.getElementById("pn").value;
-
-// // let actionsbuttons = document.createElement(`
-// // <button></button>
-// // `);
-// let actionsbuttons=`
-// <button id="edit" >Edit</button>
-// <button id="del" >Delete</button>
-// `
-
-
-//   let row = document.createElement("tr");
-//   let cnCell = document.createElement("td");
-//   let pnCell = document.createElement("td");
-//   let actionscell = document.createElement("td");
-
-  
-//   cnCell.innerHTML = cn ;
-//   pnCell.innerHTML = pn;
-//   actionscell.innerHTML = actionsbuttons;
-  
-//   row.appendChild(cnCell);
-//   row.appendChild(pnCell);
-//   row.appendChild(actionscell);
-
-//   document.getElementById("table").appendChild(row);
-//   document.getElementById("name").value='';
-//   document.getElementById("pn").value='';
-  
-// }
+}
