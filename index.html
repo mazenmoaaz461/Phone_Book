@@ -12,7 +12,7 @@
     <link href="css/modal.css" rel="stylesheet" type="text/css"/>
 
 </head>
-<body onload="view();">
+<body onload="view();" style="margin: 0 auto; padding: 0; text-align: center;">
     
       <h1>Contacts</h1>
 
@@ -23,7 +23,8 @@
       <button id="edit" >Edit</button>
       </div>
       <!-- <table style="border: 1px solid black;"> -->
-      <table>
+      <!-- <table align="center"> -->
+        <table style="margin: 0 auto;">
         <thead>
           <tr >
             <th></th>
@@ -32,7 +33,7 @@
             <!-- <th>Actions</th> -->
           </tr>
         </thead>
-        <tbody id="table" >     
+        <tbody id="table">     
             <!-- <tr>
                 <td></td>
                 <td></td>
@@ -52,12 +53,12 @@
        <div class="modal-body">
            <br/>
            <div>
-         <span>Contact name</span><br/>
+         <span>Contact name</span><br/><br/>
          <input type="text" id="name" placeholder="Enter your name" class="textfields" required/>
            </div><br/>
            
            <div>
-         <span>Phone Number</span><br/>
+         <span>Phone Number</span><br/><br/>
          <input type="text" id="pn" placeholder="Enter your Phone Number" class="textfields" required/>
            </div><br/>
          

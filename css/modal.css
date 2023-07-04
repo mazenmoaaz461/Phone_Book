@@ -23,7 +23,7 @@
   
   /* The Close Button */
   .close {
-    color: #aaa;
+    color: #0e0000;
     float: right;
     font-size: 28px;
     font-weight: bold;
@@ -35,9 +35,6 @@
     text-decoration: none;
     cursor: pointer;
   } 
-
-
-
 
   
 /* Modal Header */
@@ -64,7 +61,7 @@
   margin: auto;
   padding: 0;
   border: 1px solid #888;
-  width: 80%;
+  width: 40%;
   box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
   animation-name: animatetop;
   animation-duration: 0.4s
@@ -79,4 +76,23 @@
 .myBTNS
 {
  margin-left: 16%;
+}
+
+#save
+{
+  width: 90px;
+  margin-bottom: 12px;
+  height: 30px;
+  background-color: #67a51c;
+  color: #fefefe;
+  font-weight: bold;
+}
+
+#pn,#name
+{
+  border-color: gray;
+  width: 160px;
+  height: 38px;
+  text-align: center;
+  border-radius: 3px;
 }

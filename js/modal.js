@@ -47,12 +47,14 @@ window.onclick = function(event) {
   
 } 
 
-    const cnFromStorage = JSON.parse(localStorage.getItem("cndata"));
-    const pnFromStorage = JSON.parse(localStorage.getItem("pndata"));
-    
-function save() {
+const cnFromStorage = JSON.parse(localStorage.getItem("cndata"));
+const pnFromStorage = JSON.parse(localStorage.getItem("pndata"));
 
+function save() {
+  //The customer is restricted from saving blank data
+  let regex=/^\s*$/gi;
   //if there is nothing saved at the start then save an empty array in localStorage
+  if(regex.test(document.getElementById("name").value)===false&&regex.test(document.getElementById("pn").value)===false){
   if(localStorage.getItem('cndata')==null||localStorage.getItem('pndata')==null)
   {
     localStorage.setItem('cndata','[]');
@@ -62,9 +64,7 @@ function save() {
   let cn_old_data=JSON.parse(localStorage.getItem('cndata'));
   let pn_old_data=JSON.parse(localStorage.getItem('pndata'));
 
-  // //save data to localStorage if it matches these regular expressions(any character)
-  // let regex=/^\S|\S.*\S$/gi;
-  // if(regex.test(localStorage.getItem('cndata'))){
+  
 
   //add saved data to the old data
   cn_old_data.push(document.getElementById("name").value);
@@ -85,22 +85,27 @@ function save() {
       let cnCell = document.createElement("td");
       let pnCell = document.createElement("td");
 
+
+      let checkboxcell = document.createElement("td");
+      checkboxcell.innerHTML = checkbox.outerHTML;
+      row.appendChild(checkboxcell);
+    
+      
   
       const lastcn= cn_old_data[cn_old_data.length-1];
       const lastpn= pn_old_data[pn_old_data.length-1];
       cnCell.innerHTML = lastcn;
       pnCell.innerHTML = lastpn;
-  
+      
       row.appendChild(cnCell);
       row.appendChild(pnCell);
   
       document.getElementById("table").appendChild(row);
     }
-  // }
-    
-  // else{
-  //   alert("fas");
-  // }
+  }
+   else{
+    alert("Please enter valid name or mobile number");
+  }
 
 };
 
@@ -110,7 +115,7 @@ function view()
     
     try{
     for(let i = 0;i<cnFromStorage.length;i++){  
-      
+    
     let row = document.createElement("tr");
     let cnCell = document.createElement("td");
     let pnCell = document.createElement("td");
@@ -134,7 +139,3 @@ catch(error)
   console.log("Empty data");
 }
 }
-
-// function deleteAll(){
-
-// }
