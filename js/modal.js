@@ -55,14 +55,18 @@ function save() {
   //if there is nothing saved at the start then save an empty array in localStorage
   if(localStorage.getItem('cndata')==null||localStorage.getItem('pndata')==null)
   {
-    localStorage.setItem('cndata','[]');
-    localStorage.setItem('pndata','[]');
+    // localStorage.setItem('cndata','[]');
+    // localStorage.setItem('pndata','[]');
+    alert("Please Enter a valid name or number");
   }
 
   let cn_old_data=JSON.parse(localStorage.getItem('cndata'));
   let pn_old_data=JSON.parse(localStorage.getItem('pndata'));
 
-  
+  // //save data to localStorage if it matches these regular expressions(any character)
+  // let regex=/^\S|\S.*\S$/gi;
+  // if(regex.test(localStorage.getItem('cndata'))){
+
   //add saved data to the old data
   cn_old_data.push(document.getElementById("name").value);
   pn_old_data.push(document.getElementById("pn").value);
@@ -92,8 +96,12 @@ function save() {
       row.appendChild(pnCell);
   
       document.getElementById("table").appendChild(row);
-  }
+    }
+  // }
     
+  // else{
+  //   alert("fas");
+  // }
 
 };
 
@@ -122,6 +130,6 @@ function view()
   }
 }
 
-function deleteAll(){
+// function deleteAll(){
 
-}
+// }
