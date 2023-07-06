@@ -47,14 +47,24 @@ window.onclick = function(event) {
   
 } 
 
-const cnFromStorage = JSON.parse(localStorage.getItem("cndata"));
-const pnFromStorage = JSON.parse(localStorage.getItem("pndata"));
+let cnFromStorage = JSON.parse(localStorage.getItem("cndata"));
+let pnFromStorage = JSON.parse(localStorage.getItem("pndata"));
+
+let cnFromStorage_str = JSON.stringify(cnFromStorage);
+let pnFromStorage_str = JSON.stringify(pnFromStorage);
+
 
 function save() {
   //The customer is restricted from saving blank data
   let regex=/^\s*$/gi;
+  let pnregex= /^[0-9]+$/gi
   //if there is nothing saved at the start then save an empty array in localStorage
-  if(regex.test(document.getElementById("name").value)===false&&regex.test(document.getElementById("pn").value)===false){
+  if(regex.test(document.getElementById("name").value)===false
+  &&
+  regex.test(document.getElementById("pn").value)===false
+  &&
+  pnregex.test(document.getElementById("pn").value)===true
+  ){
   if(localStorage.getItem('cndata')==null||localStorage.getItem('pndata')==null)
   {
     localStorage.setItem('cndata','[]');
@@ -109,6 +119,7 @@ function save() {
 
 };
 
+
 function view()
 { 
     document.getElementById("table").innerHTML ='';
@@ -138,4 +149,40 @@ catch(error)
 {
   console.log("Empty data");
 }
+}
+
+function delete_all_selectedrecords()
+{
+  let confirmdeletion = confirm("Are You sure you want to delete selected records");
+
+  // Get all the checked checkboxes
+  let  checkedboxes=document.querySelectorAll("input[type=checkbox]:checked")
+  let  checkboxes=document.querySelectorAll("input[type=checkbox]");
+  
+
+  //if OK is clicked 
+  if (confirmdeletion) {
+  // For each checked checkbox, get the parent row.
+    for (let i = 0; i < checkedboxes.length; i++) {
+    //this is the row of the selected checkbox 
+    let tr = checkedboxes[i].closest('tr');
+    // Remove the row from the table.
+    tr.remove();
+   }
+
+  // // Create an empty array to store the rows to be deleted.
+  // let rowsToDelete = [];
+
+  // // Loop through the checked checkboxes and add the corresponding rows to the array.
+  // for (let i = 0; i < checkedboxes.length; i++) {
+    
+  //   let row = checkedboxes[i].parentNode.parentNode;
+  //   rowsToDelete.push(row);
+    
+  // }
+  // // Delete the rows.
+  // for (let i = 0; i < rowsToDelete.length; i++) {
+  //   rowsToDelete[i].remove();
+  // }
+  }
 }
