@@ -94,13 +94,6 @@ function save() {
       let cnCell = document.createElement("td");
       let pnCell = document.createElement("td");
 
-
-      // let checkboxcell = document.createElement("td");
-      // checkboxcell.innerHTML = checkbox.outerHTML;
-      // row.appendChild(checkboxcell);
-    
-      
-  
       const lastcn= cn_old_data[cn_old_data.length-1];
       const lastpn= pn_old_data[pn_old_data.length-1];
       cnCell.innerHTML = lastcn;
@@ -118,7 +111,6 @@ function save() {
 
 };
 
-
 function view()
 { 
     document.getElementById("table").innerHTML ='';
@@ -129,14 +121,10 @@ function view()
     let row = document.createElement("tr");
     let cnCell = document.createElement("td");
     let pnCell = document.createElement("td");
-    // let checkboxcell = document.createElement("td");
     
-    
-    // checkboxcell.innerHTML = checkbox.outerHTML;
     cnCell.innerHTML = cnFromStorage[i];
     pnCell.innerHTML = pnFromStorage[i];
     
-    // row.appendChild(checkboxcell);
     row.appendChild(cnCell);
     row.appendChild(pnCell);
     
@@ -149,47 +137,3 @@ catch(error)
   console.log("Empty data");
 }
 }
-
-// function delete_all_selectedrecords()
-// {
-//   let confirmdeletion = confirm("Are You sure you want to delete selected records");
-
-//   // Get all the checked checkboxes
-//   // let  checkedboxes=document.querySelectorAll("input[type=checkbox]:checked")
-//   let  checkbox=document.querySelectorAll("input[type=checkbox]");
-  
- 
-//   //if OK is clicked 
-//   if (confirmdeletion) {
-//   // // For each checked checkbox, get the parent row.
-//   //   for (let i = 0; i < checkedboxes.length; i++) {
-//   //   //this is the row of the selected checkbox 
-//   //   let tr = checkedboxes[i].closest('tr');
-//   //   // Remove the row from the table.
-//   //   tr.remove(); 
-//   //  }
-//    for (let i = 0; i < cnFromStorage.length; i++) {
-//     if(checkbox[i].checked)
-//     {
-//       console.log(i);
-//       let tr = checkbox[i].closest('tr');
-//       // Remove the row from the table.
-//       tr.remove(); 
-//     }
-//   }
-//   // // Create an empty array to store the rows to be deleted.
-//   // let rowsToDelete = [];
-
-//   // // Loop through the checked checkboxes and add the corresponding rows to the array.
-//   // for (let i = 0; i < checkedboxes.length; i++) {
-    
-//   //   let row = checkedboxes[i].parentNode.parentNode;
-//   //   rowsToDelete.push(row);
-    
-//   // }
-//   // // Delete the rows.
-//   // for (let i = 0; i < rowsToDelete.length; i++) {
-//   //   rowsToDelete[i].remove();
-//   // }
-//   }
-// }
