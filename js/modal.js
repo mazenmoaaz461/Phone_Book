@@ -7,20 +7,6 @@ const btn = document.getElementById("myBtn");
 // Get the <span> element that closes the modal
 const span = document.getElementsByClassName("close")[0];
 
-//checkbox for deleting the checked records
-let checkbox = document.createElement("input");
-// checkbox1.setAttribute("type", "checkbox");
-checkbox.type = "checkbox";
-checkbox.name = "checkbox";
-checkbox.value = "1";
-checkbox.id="checkaya";
-checkbox.style=
-{
-  background: "black",
-  color: "black",
-  height: "20px",
-};
-
 
 btn.onclick = function() {
   modal.style.display = "block";
