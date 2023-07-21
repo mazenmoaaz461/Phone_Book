@@ -125,10 +125,14 @@ function view()
     let row = document.createElement("tr");
     let cnCell = document.createElement("td");
     let pnCell = document.createElement("td");
+    let checkboxcell = document.createElement("td");
     
+    
+    checkboxcell.innerHTML = checkbox.outerHTML;
     cnCell.innerHTML = cnFromStorage[i];
     pnCell.innerHTML = pnFromStorage[i];
     
+    row.appendChild(checkboxcell);
     row.appendChild(cnCell);
     row.appendChild(pnCell);
     
