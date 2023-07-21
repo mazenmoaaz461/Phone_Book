@@ -161,3 +161,67 @@ function delete_allrecords()
 
   }
 }
+
+function delete_all_selectedrecords()
+{
+  // Get all the checked checkboxes
+  // let  checkedboxes=document.querySelectorAll("input[type=checkbox]:checked");
+  let  checkbox=document.querySelectorAll("input[type=checkbox]");
+  let cn=JSON.parse(localStorage.getItem("cndata"));
+  let pn=JSON.parse(localStorage.getItem("pndata"));
+  let indexes=JSON.parse(localStorage.getItem("indexes"));
+  const checkedCheckboxes = [];
+
+
+  let checkedCount=0;
+  for (var i = 0; i < checkbox.length; i++) {
+    if (checkbox[i].checked) {
+      checkedCount++;
+    }
+  }
+  
+  if(checkedCount!==0){
+  let confirmdeletion = confirm("Are You sure you want to delete the selected records");
+  //if OK is clicked 
+  if (confirmdeletion) {
+
+   for (let i = 0; i < cnFromStorage.length; i++) {
+    if(checkbox[i].checked)
+    {
+      console.log(i);
+      let tr = checkbox[i].closest('tr');
+      // Remove the row from the table.
+      tr.remove(); 
+    }
+  }
+
+  for(let i=0;i<indexesFromStorage.length;i++)
+  {
+    if (checkbox[i].checked) {
+      checkedCheckboxes.push(i);
+    }
+  }
+
+  // Create a new array without the checked indexes.
+  const newArray = indexes.filter((item, index) => {
+    return !checkedCheckboxes.includes(index);
+  });
+  const newArray2 = cn.filter((item, index) => {
+    return !checkedCheckboxes.includes(index);
+  });
+  const newArray3 = pn.filter((item, index) => {
+    return !checkedCheckboxes.includes(index);
+  });
+
+// Save the new array to localStorage.
+localStorage.setItem("indexes", JSON.stringify(newArray));
+localStorage.setItem("cndata", JSON.stringify(newArray2));
+localStorage.setItem("pndata", JSON.stringify(newArray3));
+
+  }
+}
+else
+{
+  alert("Please select the records you want to delete");
+}
+}
