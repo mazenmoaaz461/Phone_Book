@@ -141,3 +141,23 @@ catch(error)
   console.log("Empty data");
 }
 }
+
+function delete_allrecords()
+{
+  let deleteall=document.createElement("button");
+  deleteall.innerHTML="Delete All";
+
+  // document.body.appendChild(deleteall);
+
+  let confirmdeletion = confirm("Are You sure you want to clear your contacts");
+
+  if(confirmdeletion)
+  {
+    localStorage.removeItem("cndata");
+    localStorage.removeItem("pndata");
+    localStorage.removeItem("indexes");
+    localStorage.removeItem("id");
+    document.getElementById("table").innerHTML='';
+
+  }
+}
