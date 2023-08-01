@@ -15,21 +15,35 @@
 <body onload="view();" style="margin: 0 auto; padding: 0; text-align: center;">
     
       <h1>Contacts</h1>
-      <div class="myBTNS">
-      <button id="myBtn" style="margin: 20px;">Add Contact</button>
-      <button id="del" onclick="delete_all_selectedrecords()">Delete</button>
-      <button id="delall" onclick="delete_allrecords()">Delete All</button>
-
+      <div class="myBTNS" style="margin: 70px;">
+      <div style= "display: flex; flex-direction: row; margin-left: 33%; margin-bottom: 3%;">
+      <input type="text" id="search" onkeyup="searching()" placeholder="Search for Contacts.....">
+      <button id="btnsearch">Search</button>
       </div>
-        <table style="margin: 0 auto;">
+      <button id="myBtn" class="btns">Add Contact</button>
+      <button id="select" class="btns" onclick="selecting()">Select</button>
+      <button id="del" class="btns" onclick="delete_all_selectedrecords()">Delete</button>
+      <button id="delall" onclick="delete_allrecords()" class="btns">Delete All</button>
+      <!-- <button id="edit" class="btns" onclick="selecting()">Edit</button> -->
+      <button id="edit" class="btns" onclick="edit()">Edit</button>
+      </div>
+      <!-- <table style="border: 1px solid black;"> -->
+      <!-- <table align="center"> -->
+        <table id="wholetable">
         <thead>
-          <tr>
-            <th></th>
+          <tr id="mytableheader">
+            <!-- <th></th> -->
             <th>Name</th>
-            <th>Phone Number</th> 
+            <th>Phone Number</th>
+            <!-- <th>Actions</th> -->
           </tr>
         </thead>
         <tbody id="table">     
+            <!-- <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+              </tr> -->
         </tbody>
         </table>
 
@@ -52,7 +66,10 @@
          <span>Phone Number</span><br/><br/>
          <input type="text" id="pn" placeholder="Enter your Phone Number" class="textfields" required/>
            </div><br/>
-        
+         
+       
+   
+           <!-- <button id="save">Save</button> -->
            <button id="save" onclick="save()">Save</button>
        </div>
        <div class="modal-footer">
@@ -61,6 +78,36 @@
      </div> 
    
          </div>
+
+<!--EDIT Contact-->
+         <div id="editmodal" class="modal">
+            
+          <div class="modal-content">
+              <div class="modal-header">
+                <span class="close">&times;</span>
+                <h2>Edit the Contact</h2>
+              </div>
+              <div class="modal-body">
+                  <br/>
+                  <div>
+                <span>Contact name</span><br/><br/>
+                <input type="text" id="name_edit" placeholder="Enter the new name" class="textfields" required/>
+                  </div><br/>    
+                  <div>
+                <span>Phone Number</span><br/><br/>
+                <input type="text" id="pn_edit" placeholder="Enter the new Phone Number" class="textfields" required/>
+                  </div><br/>
+       
+                 
+                <button id="save_edit" onclick="edit_backend()">Edit</button>
+                </div>
+                <div class="modal-footer">
+                  <h3>Phone Book</h3>
+                </div>
+              </div> 
+                  </div>
+
+
       <script src="js/index.js" type="text/javascript"></script>
       <script src="js/modal.js" type="text/javascript"></script>
 </body>

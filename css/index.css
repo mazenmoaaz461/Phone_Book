@@ -1,13 +1,39 @@
 table {
-    border-collapse: collapse;
-    width: 500px;
-  }
-  
-  th, td {
-    border: 1px solid black;
-    padding: 10px;
-  }
-  
-  th {
-    background-color: lightgray;
-  }
+  border-collapse: collapse;
+  width: 500px;
+  margin: 0 auto;
+}
+
+
+th, td {
+  border: 1px solid black;
+  padding: 10px;
+}
+
+th {
+  background-color: lightgray;
+}
+
+
+#search
+{
+  border-width: 0.9px;
+  border-color: black;
+  border-radius: 5px;
+  height: 35px ;
+  width: 40%;
+}
+
+#search::placeholder {
+  color: darkred;
+  font-size: 14px;
+  font-weight: arial;
+}
+
+
+#btnsearch
+{
+  margin-left: 3%;
+  margin-top: 5px;
+  height: 26px;
+}
